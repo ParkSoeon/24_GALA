@@ -14,7 +14,7 @@ import sqlite3 #db 연결
 import streamlit as st
 from streamlit_calendar import calendar # type: ignore
 
-import plotly.express as px
+#import plotly.express as px
 from PIL import Image
 
 import chardet
@@ -23,10 +23,10 @@ from tkinter.filedialog import Open
 import json
 
 import openai
-from openai import OpenAI
+#from openai import OpenAI
 
 os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+#client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 ### 2. streamlit 페이지 스타일 설정 -----------------------------------------------------
 
@@ -640,7 +640,8 @@ def main():
                             if not st.session_state.gpt_requested:
                                 try:
                                     st.info("GPT에 시험 계획 요청 중...")
-                                    response = client.chat.completions.create(
+                                    # response = client.chat.completions.create(
+                                    response = openai.Completions.create(
                                         model="gpt-4o-mini",
                                         messages=[
                                             {"role": "system", "content": "You are an assistant that helps students prepare for exams."},
